@@ -4,10 +4,10 @@ import Header from '../components/Header'
 const LoginPage = () => {
   return (
     <>
-      <div className="bg-black sm:bg-inherit sm:bg-gradient-to-b from-[#00000098] w-full h-[100dvh] overflow-hidden  sm:flex sm:items-center sm:justify-center">
+      <div className="bg-black sm:bg-inherit w-full h-[100dvh] overflow-hidden  sm:flex sm:items-center sm:justify-center">
         <Header />
         <img
-          className="min-h-[100vh] object-cover fixed top-0 -z-10 hidden sm:block  lg:h-auto w-full  "
+          className="min-h-[100vh] object-cover fixed top-0 -z-10 hidden sm:block brightness-50  lg:h-auto w-full  "
           src="https://assets.nflxext.com/ffe/siteui/vlv3/a56dc29b-a0ec-4f6f-85fb-50df0680f80f/04dc244c-b014-4f98-ac24-cf31c955574e/NP-en-20240617-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           alt="bgImage"
         />
