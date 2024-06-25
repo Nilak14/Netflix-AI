@@ -1,3 +1,11 @@
+# Netflix AI
+
+- VITE REACT
+- Tailwind CSS
+- React Router Dom
+- React Icons
+-
+
 # Features
 
 - ## SignIn/Sign up page

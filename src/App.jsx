@@ -1,7 +1,9 @@
+import AppLayout from './AppLayout'
+
 function App() {
   return (
     <>
-      <h1>netflix Ai</h1>
+      <AppLayout />
     </>
   )
 }
