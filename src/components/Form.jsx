@@ -1,15 +1,18 @@
 import {useRef, useState} from 'react'
 import {RxCrossCircled} from 'react-icons/rx'
 import formValidation from '../utils/formValidation'
+import {IoEye} from 'react-icons/io5'
+import {IoEyeOff} from 'react-icons/io5'
 
 const Form = () => {
   const [isSignInActive, setIsSignInActive] = useState(true)
   const [emailErrorMsg, setEmailErrorMsg] = useState(null)
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null)
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true)
+
   const fullName = useRef(null)
   const email = useRef(null)
   const password = useRef(null)
-
   const handleFormValidation = () => {
     const msg = formValidation(email.current.value, password.current.value)
     if (msg === null) {
@@ -29,6 +32,13 @@ const Form = () => {
   const handleFormToggle = () => {
     setIsSignInActive(!isSignInActive)
   }
+
+  const togglePassword = (e) => {
+    e.preventDefault()
+    setIsPasswordHidden(!isPasswordHidden)
+    password.current.focus()
+  }
+
   return (
     <form
       className="text-white tracking-wider w-[90vw] sm:w-[90%] mx-auto flex flex-col gap-8"
@@ -66,13 +76,23 @@ const Form = () => {
           </p>
         )}
       </div>
-      <div>
+      <div className="relative">
         <input
           ref={password}
           className="rounded-sm w-full outline-none focus:border-white focus:border-2   bg-[#0F0F0F]  px-2 py-3"
-          type="password"
+          type={isPasswordHidden ? 'password' : 'text'}
           placeholder="Password"
         />
+        <div
+          onClick={togglePassword}
+          className="absolute top-1/2 translate-y-[-50%] right-5  "
+        >
+          {isPasswordHidden ? (
+            <IoEyeOff className="text-lg" />
+          ) : (
+            <IoEye className="text-lg" />
+          )}
+        </div>
         {passwordErrorMsg && (
           <p className="flex mt-3 items-center gap-2 netflixText text-sm">
             <RxCrossCircled className="text-lg" />
@@ -80,7 +100,7 @@ const Form = () => {
           </p>
         )}
       </div>
-      <button className="netflixBG py-3 rounded-sm font-bold text-lg hover:bg-red-700 transition-colors duration-200">
+      <button className="netflixBG py-3 rounded-sm font-bold text-lg hover:bg-red-700 transition-colors duration-200 select-none">
         {isSignInActive ? 'Sign In' : 'Sign Up'}
       </button>
       <p className="text-gray-400 text-sm ">
