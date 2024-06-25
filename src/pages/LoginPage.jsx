@@ -19,6 +19,3 @@ const LoginPage = () => {
   )
 }
 export default LoginPage
-
-// className =
-// 'sm:w-[450px]  sm:absolute sm:top-1/2 sm:left-1/2 sm:translate-x-[-50%] sm:translate-y-[-50%] sm:p-10 sm:bg-black sm:bg-opacity-70 sm:rounded-md '
