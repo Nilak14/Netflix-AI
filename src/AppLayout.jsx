@@ -9,11 +9,11 @@ const AppLayout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const {uid, email, displayName} = user
         dispatch(addUser({uid, email, displayName}))
-
+        navigate('/browse')
         // ...
       } else {
         // User is signed out
@@ -21,13 +21,14 @@ const AppLayout = () => {
         navigate('/')
       }
     })
+    return () => unsubscribe()
   }, [])
   return (
-    <section className="bg-black sm:bg-transparent h-screen">
+    // <section className="bg-black sm:bg-transparent ">
+    <section>
       <Header />
       <Outlet />
     </section>
   )
 }
 export default AppLayout
-// div className="font-roboto"

@@ -9,7 +9,6 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import {auth} from '../Firebase/firebase'
-import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {addUser} from '../Redux/Slices/userSlice'
 
@@ -19,7 +18,6 @@ const Form = () => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [isPasswordHidden, setIsPasswordHidden] = useState(true)
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const fullName = useRef(null)
@@ -56,7 +54,6 @@ const Form = () => {
               const {uid, email, displayName} = auth.currentUser
               dispatch(addUser({uid, email, displayName}))
               console.log('updated')
-              navigate('/browse')
             })
             .catch((error) => {
               setErrorMessage(error.message)
@@ -79,7 +76,6 @@ const Form = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user
-          navigate('/browse')
           setEmailErrorMsg(null)
         })
         .catch((error) => {
@@ -96,7 +92,6 @@ const Form = () => {
   const togglePassword = (e) => {
     e.preventDefault()
     setIsPasswordHidden(!isPasswordHidden)
-    password.current.focus()
   }
 
   return (
