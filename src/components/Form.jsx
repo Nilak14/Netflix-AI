@@ -6,8 +6,12 @@ import {IoEyeOff} from 'react-icons/io5'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth'
 import {auth} from '../Firebase/firebase'
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {addUser} from '../Redux/Slices/userSlice'
 
 const Form = () => {
   const [isSignInActive, setIsSignInActive] = useState(true)
@@ -15,6 +19,8 @@ const Form = () => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [isPasswordHidden, setIsPasswordHidden] = useState(true)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const fullName = useRef(null)
   const email = useRef(null)
@@ -43,7 +49,18 @@ const Form = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user
-          console.log(user)
+          updateProfile(user, {
+            displayName: fullName.current.value,
+          })
+            .then(() => {
+              const {uid, email, displayName} = auth.currentUser
+              dispatch(addUser({uid, email, displayName}))
+              console.log('updated')
+              navigate('/browse')
+            })
+            .catch((error) => {
+              setErrorMessage(error.message)
+            })
           setErrorMessage(null)
         })
         .catch((error) => {
@@ -62,7 +79,7 @@ const Form = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user
-          console.log(user)
+          navigate('/browse')
           setEmailErrorMsg(null)
         })
         .catch((error) => {

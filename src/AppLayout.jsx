@@ -1,22 +1,32 @@
-import {RouterProvider, createBrowserRouter} from 'react-router-dom'
-import BrowsePage from './pages/BrowsePage'
-import LoginPage from './pages/LoginPage'
-
+import {Outlet, useNavigate} from 'react-router-dom'
+import {onAuthStateChanged} from 'firebase/auth'
+import {auth} from './Firebase/firebase'
+import {useEffect} from 'react'
+import {addUser, removeUser} from './Redux/Slices/userSlice'
+import {useDispatch} from 'react-redux'
+import Header from './components/Header'
 const AppLayout = () => {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <LoginPage />,
-    },
-    {
-      path: '/browse',
-      element: <BrowsePage />,
-    },
-  ])
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid, email, displayName} = user
+        dispatch(addUser({uid, email, displayName}))
+
+        // ...
+      } else {
+        // User is signed out
+        dispatch(removeUser())
+        navigate('/')
+      }
+    })
+  }, [])
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <section className="bg-black sm:bg-transparent h-screen">
+      <Header />
+      <Outlet />
+    </section>
   )
 }
 export default AppLayout
