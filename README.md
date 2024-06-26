@@ -4,7 +4,8 @@
 - Tailwind CSS
 - React Router Dom
 - React Icons
--
+- Firebase Auth
+- Redux Toolkit
 
 # Features
 

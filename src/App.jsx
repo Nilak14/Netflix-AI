@@ -1,9 +1,13 @@
+import {Provider} from 'react-redux'
 import AppLayout from './AppLayout'
+import mainStore from './Redux/mainStore'
 
 function App() {
   return (
     <>
-      <AppLayout />
+      <Provider store={mainStore}>
+        <AppLayout />
+      </Provider>
     </>
   )
 }
