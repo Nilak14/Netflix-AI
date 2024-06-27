@@ -24,7 +24,6 @@ const AppLayout = () => {
     return () => unsubscribe()
   }, [])
   return (
-    // <section className="bg-black sm:bg-transparent ">
     <section className="relative">
       <Header />
       <Outlet />

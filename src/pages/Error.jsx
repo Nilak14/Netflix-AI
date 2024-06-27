@@ -7,7 +7,7 @@ const Error = () => {
   return (
     <>
       <div className=" h-screen flex flex-col items-center justify-center">
-        <img className="md:h-[70vh] md:w-[50vw]" src={svg} alt="svg" />
+        <img className="md:aspect-auto md:w-[50vw]" src={svg} alt="svg" />
         <button
           onClick={() => {
             console.log('ok')

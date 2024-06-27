@@ -3,8 +3,8 @@ import {SIGN_UP_BG_IMAGE_URL} from '../utils/constant'
 
 const LoginPage = () => {
   return (
-    <main className=" h-screen sm:h-auto pt-[70px] sm:pt-0  sm:flex sm:items-center sm:justify-center bg-black sm:bg-transparent ">
-      <section className="sm:w-[450px] sm:p-10 sm:bg-black sm:bg-opacity-70 sm:rounded-md sm:translate-y-[10%]">
+    <main className=" h-[calc(100vh-70px)]  sm:h-auto  sm:pt-0  sm:flex sm:items-center sm:justify-center bg-black sm:bg-transparent ">
+      <section className="sm:w-[450px] sm:p-10 sm:bg-black sm:bg-opacity-70 sm:rounded-md  sm:translate-y-[25%]">
         <Form />
       </section>
       <img

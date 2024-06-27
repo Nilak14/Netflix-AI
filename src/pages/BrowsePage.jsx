@@ -1,14 +1,15 @@
-import {useSelector} from 'react-redux'
 import useNowPlayingMovies from '../Hooks/useNowPlayingMovies'
+import MovieTrailerBG from '../components/MovieTrailerBG'
+import MoviesListContainer from '../components/MoviesListContainer'
 
 const BrowsePage = () => {
   useNowPlayingMovies()
-  const nowPlayingMovies = useSelector(
-    (store) => store.movieSlice?.nowPlayingMovies
-  )
-  console.log(nowPlayingMovies)
+
   return (
-    <main className="pt-[70px] sm:pt-0 border-2 border-black">BrowsePage</main>
+    <main className="bg-neutral-950 text-white">
+      <MovieTrailerBG />
+      <MoviesListContainer />
+    </main>
   )
 }
 export default BrowsePage
