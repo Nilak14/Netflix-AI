@@ -4,12 +4,14 @@ import mainStore from './Redux/mainStore'
 import LoginPage from './pages/LoginPage'
 import BrowsePage from './pages/BrowsePage'
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import Error from './pages/Error'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
       element: <AppLayout />,
+      errorElement: <Error />,
       children: [
         {
           path: '/',

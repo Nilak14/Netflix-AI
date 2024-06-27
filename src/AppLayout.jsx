@@ -25,7 +25,7 @@ const AppLayout = () => {
   }, [])
   return (
     // <section className="bg-black sm:bg-transparent ">
-    <section>
+    <section className="relative">
       <Header />
       <Outlet />
     </section>
