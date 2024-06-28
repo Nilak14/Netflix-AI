@@ -6,7 +6,7 @@ const BrowsePage = () => {
   useNowPlayingMovies()
 
   return (
-    <main className="bg-neutral-950 text-white">
+    <main className=" bg-[#141414] text-white pb-[40px]">
       <MovieTrailerBG />
       <MoviesListContainer />
     </main>

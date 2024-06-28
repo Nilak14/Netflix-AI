@@ -10,7 +10,6 @@ const Trailer = ({movieID}) => {
 
   const filterData = movieTrailerData.filter((data) => data.type === 'Trailer')
   const mainTrailer = filterData.length ? filterData[1] : movieTrailerData[0]
-  console.log(mainTrailer)
 
   return (
     <section className="relative  h-0 pb-[56.25%]">

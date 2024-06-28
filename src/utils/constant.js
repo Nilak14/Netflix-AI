@@ -14,3 +14,5 @@ export const API_OPTIONS = {
     Authorization: import.meta.env.VITE_AUTHORIZATION,
   },
 }
+
+export const IMG_LINK = 'https://image.tmdb.org/t/p/w780'

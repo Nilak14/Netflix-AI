@@ -9,7 +9,7 @@ const MovieTrailerBG = () => {
   if (!nowPlayingMovies) {
     return <h1>Loading.....</h1>
   }
-  const mainMovie = nowPlayingMovies[9] ?? nowPlayingMovies[0]
+  const mainMovie = nowPlayingMovies[6] ?? nowPlayingMovies[0]
   const {id, title, overview} = mainMovie
   return (
     <section className="relative">
