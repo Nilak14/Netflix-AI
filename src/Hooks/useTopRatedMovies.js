@@ -2,18 +2,18 @@ import {useEffect} from 'react'
 import {API_OPTIONS} from '../utils/constant'
 import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {addNowPlaying} from '../Redux/Slices/movieSlice'
+import {addTopRated} from '../Redux/Slices/movieSlice'
 
-const useNowPlayingMovies = (page) => {
+const useTopRatedMovies = (url) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
-    fetchNowPlayingVideos()
+    fetchTopRatedMovies()
   }, [])
-  const fetchNowPlayingVideos = async () => {
+  const fetchTopRatedMovies = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?page=${page}`,
+        'https://api.themoviedb.org/3/movie/top_rated?page=1',
         API_OPTIONS
       )
       if (!response.ok) {
@@ -21,10 +21,10 @@ const useNowPlayingMovies = (page) => {
         return
       }
       const data = await response.json()
-      dispatch(addNowPlaying(data.results))
+      dispatch(addTopRated(data.results))
     } catch (error) {
       navigate('/error')
     }
   }
 }
-export default useNowPlayingMovies
+export default useTopRatedMovies

@@ -120,6 +120,7 @@ const Form = () => {
         <input
           ref={email}
           autoFocus
+          value={isSignInActive ? 'test@netflixai.com' : ''}
           className="rounded-sm  outline-none  bg-[#0F0F0F] w-full  px-2 py-3 focus:border-white focus:border-2 "
           type="text"
           placeholder="Email"
@@ -135,6 +136,7 @@ const Form = () => {
         <div className="relative">
           <input
             ref={password}
+            value={isSignInActive ? 'Test001#' : ''}
             className=" relative rounded-sm w-full outline-none focus:border-white focus:border-2   bg-[#0F0F0F]  px-2 py-3"
             type={isPasswordHidden ? 'password' : 'text'}
             placeholder="Password"
