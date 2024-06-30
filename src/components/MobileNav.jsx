@@ -39,7 +39,7 @@ const MobileNav = () => {
               >
                 <div className="flex flex-col items-center">
                   <BiSolidTv className="text-xl" />
-                  Tv Series
+                  <p className="text-nowrap">Tv Series</p>
                 </div>
               </NavLink>
             </li>
