@@ -43,7 +43,7 @@ const Header = () => {
           alt="netflix logo"
         />
         {user && (
-          <nav className="ml-4 ">
+          <nav className=" hidden sm:block ml-4 ">
             <ul className="flex gap-4">
               <li className="hover:text-gray-300">
                 <Link to={'/browse'}>Home</Link>

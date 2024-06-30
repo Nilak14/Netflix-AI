@@ -40,7 +40,7 @@ const MovieList = ({title, movies}) => {
         {isCardSlide && (
           <button
             onClick={() => scrollContainer('left')}
-            className={`absolute left-0 w-14 flex items-center justify-center bg-black bg-opacity-50 h-full text-2xl hover:text-4xl transition-all ease-in-out duration-200 `}
+            className={`absolute left-0 w-14 flex items-center justify-center bg-neutral-800 bg-opacity-50 h-full text-2xl hover:text-4xl transition-all ease-in-out duration-200 `}
           >
             <div className={`${isCardHover ? 'block' : 'hidden'} `}>
               <FaChevronLeft />
@@ -50,7 +50,7 @@ const MovieList = ({title, movies}) => {
 
         <button
           onClick={() => scrollContainer('right')}
-          className={`absolute right-0 w-14 flex items-center justify-center bg-black bg-opacity-50 h-full text-2xl hover:text-4xl transition-all ease-in-out duration-200 `}
+          className={`absolute right-0 w-14 flex items-center justify-center bg-neutral-800 bg-opacity-50 h-full text-2xl hover:text-4xl transition-all ease-in-out duration-200 `}
         >
           <div className={`${isCardHover ? 'block' : 'hidden'} `}>
             <FaChevronRight />
