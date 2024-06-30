@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 import {addUser, removeUser} from './Redux/Slices/userSlice'
 import {useDispatch} from 'react-redux'
 import Header from './components/Header'
+import MobileNav from './components/MobileNav'
 const AppLayout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -27,6 +28,7 @@ const AppLayout = () => {
     <section className="relative">
       <Header />
       <Outlet />
+      <MobileNav />
     </section>
   )
 }
