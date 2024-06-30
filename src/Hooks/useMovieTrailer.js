@@ -3,9 +3,8 @@ import {useNavigate} from 'react-router-dom'
 import {API_OPTIONS} from '../utils/constant'
 import {useDispatch} from 'react-redux'
 import {addTrailer} from '../Redux/Slices/movieSlice'
-import {addTvSeriesTrailer} from '../Redux/Slices/tvSeriesSlice'
 
-const useMovieTrailer = (id, type = 'movie') => {
+const useMovieTrailer = (movieId) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -14,7 +13,7 @@ const useMovieTrailer = (id, type = 'movie') => {
   const fetchMovieTrailerData = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/videos`,
+        `https://api.themoviedb.org/3/movie/${movieId}/videos`,
         API_OPTIONS
       )
       if (!response.ok) {
@@ -22,11 +21,7 @@ const useMovieTrailer = (id, type = 'movie') => {
         return
       }
       const data = await response.json()
-      if (type === 'movie') {
-        dispatch(addTrailer(data.results))
-      } else if (type === 'tvseries') {
-        dispatch(addTvSeriesTrailer(data.results))
-      }
+      dispatch(addTrailer(data.results))
     } catch (error) {
       navigate('/error')
     }
