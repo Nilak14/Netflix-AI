@@ -1,4 +1,12 @@
+import InfiniteScrollSection from '../components/InfiniteScrollSection'
+import PosterSection from '../components/PosterSection'
+
 const TvSeriesPage = () => {
-  return <div>TvSeriesPage</div>
+  return (
+    <section>
+      <PosterSection />
+      <InfiniteScrollSection />
+    </section>
+  )
 }
 export default TvSeriesPage
