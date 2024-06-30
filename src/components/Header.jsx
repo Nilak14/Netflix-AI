@@ -3,7 +3,7 @@ import {auth} from '../Firebase/firebase'
 import {signOut} from 'firebase/auth'
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 
 const Header = () => {
   const user = useSelector((store) => store.userSlice)
@@ -44,15 +44,31 @@ const Header = () => {
         />
         {user && (
           <nav className=" hidden sm:block ml-4 ">
-            <ul className="flex gap-4">
-              <li className="hover:text-gray-300">
-                <Link to={'/browse'}>Home</Link>
+            <ul className="flex gap-4 font-bold">
+              <li className="hover:netflixText">
+                <NavLink
+                  className={({isActive}) => isActive && 'netflixText'}
+                  to={'/browse'}
+                  end
+                >
+                  Home
+                </NavLink>
               </li>
-              <li className="hover:text-gray-300">
-                <Link to={'/browse/movies'}>Movies</Link>
+              <li className="hover:netflixText">
+                <NavLink
+                  className={({isActive}) => isActive && 'netflixText'}
+                  to={'/browse/movies'}
+                >
+                  Movies
+                </NavLink>
               </li>
-              <li className="hover:text-gray-300">
-                <Link to={'/browse/series'}>Tv Series</Link>
+              <li className="hover:netflixText">
+                <NavLink
+                  className={({isActive}) => isActive && 'netflixText'}
+                  to={'/browse/series'}
+                >
+                  Tv Series
+                </NavLink>
               </li>
             </ul>
           </nav>
