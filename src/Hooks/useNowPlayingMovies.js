@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {addNowPlaying} from '../Redux/Slices/movieSlice'
 
-const useNowPlayingMovies = () => {
+const useNowPlayingMovies = (page) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
@@ -13,7 +13,7 @@ const useNowPlayingMovies = () => {
   const fetchNowPlayingVideos = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?page=1`,
+        `https://api.themoviedb.org/3/movie/now_playing?page=${page}`,
         API_OPTIONS
       )
       if (!response.ok) {

@@ -3,11 +3,11 @@ import {auth} from '../Firebase/firebase'
 import {signOut} from 'firebase/auth'
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
 
 const Header = () => {
   const user = useSelector((store) => store.userSlice)
   const [isScrolled, setIsScrolled] = useState(false)
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -35,29 +35,11 @@ const Header = () => {
         user || 'bg-black'
       } transition-colors ease-in-out duration-[700ms] `}
     >
-      <div className="flex items-center">
-        <img
-          className="w-[110px] md:w-[180px]"
-          src={NETFLIX_LOGO_URL}
-          alt="netflix logo"
-        />
-        {user && (
-          <nav className="text-white ml-5 text-md">
-            <ul className="flex gap-6">
-              <li className="hover:text-gray-300">
-                <Link to={'/browse'}>Home</Link>
-              </li>
-              <li className="hover:text-gray-300">
-                <Link to={'/browse/tvseries'}>Tv Series</Link>
-              </li>
-              <li className="hover:text-gray-300">
-                <Link to={'/browse/movies'}>Movies</Link>
-              </li>
-            </ul>
-          </nav>
-        )}
-      </div>
-
+      <img
+        className="w-[110px] md:w-[180px]"
+        src={NETFLIX_LOGO_URL}
+        alt="netflix logo"
+      />
       {user && (
         <div className="rounded-md relative cursor-pointer flex items-center gap-1">
           <img className="rounded-md" src={FACE_URL} alt="" />

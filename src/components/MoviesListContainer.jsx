@@ -11,6 +11,7 @@ const MoviesListContainer = () => {
         <MovieList title={'now playing'} movies={movies.nowPlayingMovies} />
         <MovieList title={'top rated'} movies={movies.topRatedMovies} />
         <MovieList title={'popular now'} movies={movies.popularMovies} />
+<<<<<<< HEAD
         <MovieList title={'up coming'} movies={movies.upComingMovies} />
         {tvSeries && (
           <MovieList
@@ -18,6 +19,8 @@ const MoviesListContainer = () => {
             movies={tvSeries.onTheAirSeries}
           />
         )}
+=======
+>>>>>>> parent of 405b869 (add pages)
       </div>
     </section>
   )

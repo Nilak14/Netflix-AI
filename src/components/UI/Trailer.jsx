@@ -10,8 +10,7 @@ const Trailer = ({movieID, type}) => {
 
   if (!trailerData) return null //todo use shimmer
 
-  const filterData = trailerData.filter((data) => data.type === 'Trailer')
-  console.log(filterData)
+  const filterData = movieTrailerData.filter((data) => data.type === 'Trailer')
   const mainTrailer = filterData[0]
 
   return (
