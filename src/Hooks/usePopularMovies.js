@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {addPopular} from '../Redux/Slices/movieSlice'
 
-const usePopularMovies = (url) => {
+const usePopularMovies = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {

@@ -1,14 +1,17 @@
 import {useSelector} from 'react-redux'
 import useMovieTrailer from '../../Hooks/useMovieTrailer'
-import {useState} from 'react'
 
-const Trailer = ({movieID}) => {
-  const movieTrailerData = useSelector((store) => store.movieSlice.trailer)
-  useMovieTrailer(movieID)
+const Trailer = ({movieID, type}) => {
+  useMovieTrailer(movieID, type)
+  const trailerData =
+    type === 'movie'
+      ? useSelector((store) => store.movieSlice?.trailer)
+      : useSelector((store) => store.tvSeriesSlice?.tvSeriesTrailer)
 
-  if (!movieTrailerData) return null
+  if (!trailerData) return null //todo use shimmer
 
-  const filterData = movieTrailerData.filter((data) => data.type === 'Trailer')
+  const filterData = trailerData.filter((data) => data.type === 'Trailer')
+  console.log(filterData)
   const mainTrailer = filterData[0]
 
   return (

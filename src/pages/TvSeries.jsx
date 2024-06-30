@@ -1,4 +1,14 @@
+import useOnTheAirSeries from '../Hooks/useOnTheAirSeries'
+import MovieTrailerBG from '../components/MovieTrailerBG'
+import MoviesListContainer from '../components/MoviesListContainer'
+
 const TvSeries = () => {
-  return <div>TvSeries</div>
+  useOnTheAirSeries()
+  return (
+    <>
+      <MovieTrailerBG type={'tvseries'} />
+      <MoviesListContainer />
+    </>
+  )
 }
 export default TvSeries
