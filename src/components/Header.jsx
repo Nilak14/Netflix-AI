@@ -3,6 +3,7 @@ import {auth} from '../Firebase/firebase'
 import {signOut} from 'firebase/auth'
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 
 const Header = () => {
   const user = useSelector((store) => store.userSlice)
@@ -35,11 +36,28 @@ const Header = () => {
         user || 'bg-black'
       } transition-colors ease-in-out duration-[700ms] `}
     >
-      <img
-        className="w-[110px] md:w-[180px]"
-        src={NETFLIX_LOGO_URL}
-        alt="netflix logo"
-      />
+      <div className="flex text-white items-center">
+        <img
+          className="w-[110px] md:w-[180px]"
+          src={NETFLIX_LOGO_URL}
+          alt="netflix logo"
+        />
+        {user && (
+          <nav className="ml-4 ">
+            <ul className="flex gap-4">
+              <li className="hover:text-gray-300">
+                <Link to={'/browse'}>Home</Link>
+              </li>
+              <li className="hover:text-gray-300">
+                <Link to={'/browse/movies'}>Movies</Link>
+              </li>
+              <li className="hover:text-gray-300">
+                <Link to={'/browse/series'}>Tv Series</Link>
+              </li>
+            </ul>
+          </nav>
+        )}
+      </div>
       {user && (
         <div className="rounded-md relative cursor-pointer flex items-center gap-1">
           <img className="rounded-md" src={FACE_URL} alt="" />

@@ -4,11 +4,10 @@ import useTopRatedMovies from '../Hooks/useTopRatedMovies'
 import MovieTrailerBG from '../components/MovieTrailerBG'
 import MoviesListContainer from '../components/MoviesListContainer'
 
-const Home = () => {
-  useNowPlayingMovies(1)
+const BrowsePage = () => {
+  useNowPlayingMovies()
   usePopularMovies()
   useTopRatedMovies()
-  useUpComingMovies()
 
   return (
     <>
