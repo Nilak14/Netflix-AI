@@ -1,14 +1,15 @@
 import {useEffect} from 'react'
 import {API_OPTIONS} from '../utils/constant'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {addTopRated} from '../Redux/Slices/movieSlice'
 
 const useTopRatedMovies = (url) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const data = useSelector((store) => store.movieSlice.topRatedMovies)
   useEffect(() => {
-    fetchTopRatedMovies()
+    data || fetchTopRatedMovies()
   }, [])
   const fetchTopRatedMovies = async () => {
     try {

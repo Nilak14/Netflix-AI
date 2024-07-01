@@ -1,12 +1,16 @@
 import {useEffect} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {addMoviesImage, addSeriesImages} from '../Redux/Slices/movieSlice'
 import {API_OPTIONS} from '../utils/constant'
 
 const useImages = (url, type) => {
   const dispatch = useDispatch()
+  const imageData =
+    type === 'movie'
+      ? useSelector((store) => store.movieSlice.movieImages)?.backdrops[0]
+      : useSelector((store) => store.movieSlice.seriesImages)?.backdrops[0]
   useEffect(() => {
-    fetchImages()
+    imageData || fetchImages()
   }, [])
   const fetchImages = async () => {
     try {

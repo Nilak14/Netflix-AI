@@ -1,14 +1,15 @@
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {API_OPTIONS} from '../utils/constant'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {addTrailer} from '../Redux/Slices/movieSlice'
 
 const useMovieTrailer = (movieId) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const data = useSelector((store) => store.movieSlice.trailer)
   useEffect(() => {
-    fetchMovieTrailerData()
+    data || fetchMovieTrailerData()
   }, [])
   const fetchMovieTrailerData = async () => {
     try {

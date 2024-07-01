@@ -1,14 +1,15 @@
 import {useEffect} from 'react'
 import {API_OPTIONS} from '../utils/constant'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {addPopular} from '../Redux/Slices/movieSlice'
 
 const usePopularMovies = (url) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const data = useSelector((store) => store.movieSlice.popularMovies)
   useEffect(() => {
-    fetchPopularMovies()
+    data || fetchPopularMovies()
   }, [])
   const fetchPopularMovies = async () => {
     try {

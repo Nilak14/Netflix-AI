@@ -1,14 +1,15 @@
 import {useEffect} from 'react'
 import {API_OPTIONS} from '../utils/constant'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {addNowPlaying} from '../Redux/Slices/movieSlice'
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const data = useSelector((store) => store.movieSlice.nowPlayingMovies)
   useEffect(() => {
-    fetchNowPlayingVideos()
+    data || fetchNowPlayingVideos()
   }, [])
   const fetchNowPlayingVideos = async () => {
     try {
