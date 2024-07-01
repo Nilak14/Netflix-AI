@@ -5,7 +5,6 @@ import {API_OPTIONS} from '../utils/constant'
 
 const useImages = (url, type) => {
   const dispatch = useDispatch()
-  console.log('hi from useImage hook')
   useEffect(() => {
     fetchImages()
   }, [])
@@ -17,7 +16,6 @@ const useImages = (url, type) => {
         return
       }
       const data = await response.json()
-      console.log(data)
       type === 'movie'
         ? dispatch(addMoviesImage(data))
         : dispatch(addSeriesImages(data))

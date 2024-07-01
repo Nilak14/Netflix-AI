@@ -6,9 +6,9 @@ const InfiniteCard = ({data}) => {
       <img
         className="h-[300px] object-cover rounded-md"
         src={IMG_LINK + data.poster_path}
-        alt={data.original_title}
+        alt={data.title ?? data.name}
       />
-      <h1 className="font-bold tracking-wider">{data.original_title}</h1>
+      <h1 className="font-bold tracking-wider">{data.title ?? data.name}</h1>
     </article>
   )
 }

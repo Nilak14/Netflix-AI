@@ -6,20 +6,21 @@ import {LuInfo} from 'react-icons/lu'
 import {FaPlay} from 'react-icons/fa'
 
 const PosterSection = ({type}) => {
-  const movieData = useSelector(
-    (store) => store.infiniteMovieSlice.movieList
-  )[0]
+  const data =
+    type === 'movie'
+      ? useSelector((store) => store.infiniteMovieSlice.movieList)[0]
+      : useSelector((store) => store.infiniteSeriesSlice.seriesList[0])
 
-  if (!movieData) return //todo useShimmer for image
+  if (!data) return //todo useShimmer for image
 
   return (
     <section>
       <MovieTitle
-        movieID={movieData.id}
-        movieTitle={movieData.title}
-        movieOverview={movieData.overview}
+        movieID={data.id}
+        movieTitle={data.title ?? data.name}
+        movieOverview={data.overview}
       />
-      <BGImage id={movieData.id} type={type} />
+      <BGImage id={data.id} type={type} />
     </section>
   )
 }

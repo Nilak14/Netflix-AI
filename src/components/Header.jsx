@@ -47,7 +47,9 @@ const Header = () => {
             <ul className="flex gap-4 font-bold">
               <li className="hover:netflixText">
                 <NavLink
-                  className={({isActive}) => isActive && 'netflixText'}
+                  className={({isActive}) =>
+                    isActive ? 'netflixText' : undefined
+                  }
                   to={'/browse'}
                   end
                 >
@@ -56,7 +58,9 @@ const Header = () => {
               </li>
               <li className="hover:netflixText">
                 <NavLink
-                  className={({isActive}) => isActive && 'netflixText'}
+                  className={({isActive}) =>
+                    isActive ? 'netflixText' : undefined
+                  }
                   to={'/browse/movies'}
                 >
                   Movies
@@ -64,7 +68,9 @@ const Header = () => {
               </li>
               <li className="hover:netflixText">
                 <NavLink
-                  className={({isActive}) => isActive && 'netflixText'}
+                  className={({isActive}) =>
+                    isActive ? 'netflixText' : undefined
+                  }
                   to={'/browse/series'}
                 >
                   Tv Series

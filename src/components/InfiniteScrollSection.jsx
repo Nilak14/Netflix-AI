@@ -2,14 +2,18 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import {useSelector} from 'react-redux'
 import fetchInfiniteMovie from '../Hooks/fetchInfiniteMovie'
 import InfiniteCard from './UI/InfiniteCard'
+import fetchInfiniteSeries from '../Hooks/fetchInfiniteSeries'
 
 const InfiniteScrollSection = ({type}) => {
   let data =
-    type === 'movie' &&
-    useSelector((store) => store.infiniteMovieSlice.movieList)
-  const fetch = fetchInfiniteMovie()
+    type === 'movie'
+      ? useSelector((store) => store.infiniteMovieSlice.movieList)
+      : useSelector((store) => store.infiniteSeriesSlice.seriesList)
+
+  const fetch = type === 'movie' ? fetchInfiniteMovie() : fetchInfiniteSeries()
 
   if (!data) return //todo shimmer
+
   data = data.filter(
     (item, index, self) => index === self.findIndex((t) => t.id === item.id)
   )

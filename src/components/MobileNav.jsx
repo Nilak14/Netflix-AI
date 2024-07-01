@@ -11,7 +11,9 @@ const MobileNav = () => {
           <ul className="flex gap-16 font-bold tracking-wider items-center justify-center ">
             <li className=" text-white py-2 px-4 rounded-lg hover:netflixText">
               <NavLink
-                className={({isActive}) => isActive && 'netflixText'}
+                className={({isActive}) =>
+                  isActive ? 'netflixText' : undefined
+                }
                 end
                 to={'/browse'}
               >
@@ -23,7 +25,9 @@ const MobileNav = () => {
             </li>
             <li className=" text-white py-2 px-4 rounded-lg hover:netflixText">
               <NavLink
-                className={({isActive}) => isActive && 'netflixText'}
+                className={({isActive}) =>
+                  isActive ? 'netflixText' : undefined
+                }
                 to={'/browse/movies'}
               >
                 <div className="flex flex-col items-center">
@@ -34,7 +38,9 @@ const MobileNav = () => {
             </li>
             <li className=" text-white py-2 px-4 rounded-lg hover:netflixText ">
               <NavLink
-                className={({isActive}) => isActive && 'netflixText'}
+                className={({isActive}) =>
+                  isActive ? 'netflixText' : undefined
+                }
                 to={'/browse/series'}
               >
                 <div className="flex flex-col items-center">
