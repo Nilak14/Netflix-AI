@@ -14,6 +14,7 @@ const AppLayout = () => {
       if (user) {
         const {uid, email, displayName} = user
         dispatch(addUser({uid, email, displayName}))
+        navigate('/browse')
         // ...
       } else {
         // User is signed out
@@ -24,7 +25,7 @@ const AppLayout = () => {
     return () => unsubscribe()
   }, [])
   return (
-    <section className="relative">
+    <section className="relative ">
       <Header />
       <Outlet />
       <MobileNav />

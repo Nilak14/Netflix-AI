@@ -112,7 +112,7 @@ const Form = () => {
 
   return (
     <form
-      className="text-white tracking-wider w-[90vw] sm:w-[90%] mx-auto flex flex-col gap-8"
+      className="text-white tracking-wider w-[90vw] sm:w-[90%] mx-auto flex flex-col gap-8 "
       onSubmit={(e) => {
         e.preventDefault()
         handleFormValidation()
