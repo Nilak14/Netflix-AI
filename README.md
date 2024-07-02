@@ -6,6 +6,8 @@
 - React Icons
 - Firebase Auth
 - Redux Toolkit
+- React Infintie Scroll
+- Google Generative AI
 
 # Features
 
@@ -23,6 +25,21 @@
     - Movie Suggestions
       - Movie List (Vertically Scrollable)
 
+- ## Movies Page
+
+  - Header
+  - Main Movie Background
+  - Movie Component (Infinite Scrolling)
+
+- ## Series Page
+
+  - Header
+  - Main Series Background
+  - Series Component (Infinite Scrolling)
+
 - ## Netflix AI
+
   - Search Bar
-  - Movie Suggestion by AI
+  - Movie Suggestion by AI by the prompt provided by user
+
+- ## Shimmer UI in all loading state
