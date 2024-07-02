@@ -5,7 +5,7 @@ import run from '../Gemini/gemini'
 import {addGeneratedResult} from '../Redux/Slices/geminiSlice'
 import {IoIosSearch} from 'react-icons/io'
 
-const AIForm = () => {
+const AIForm = ({loadingState}) => {
   const [searchText, setSearchText] = useState('')
   const dispatch = useDispatch()
 
@@ -25,9 +25,10 @@ const AIForm = () => {
     if (searchText.trim() == '') {
       return
     }
+    loadingState(true)
     const prompt = `act as a movie recommendation system and suggest only 5 movie for the prompt: ${searchText}. Give answer in comma separated values as given example. example: ironman, Thor, Captain America remember to provide result in given example just provide movie names like in example. If the prompt is not related to movies and series just say 'null'.`
     const result = await run(prompt)
-
+    setSearchText('')
     const generatedResult = result.split(',')
 
     // search fro each movie
@@ -38,6 +39,7 @@ const AIForm = () => {
 
     const tmdbResults = await Promise.all(promiseArr)
     dispatch(addGeneratedResult(tmdbResults))
+    loadingState(false)
   }
 
   return (
