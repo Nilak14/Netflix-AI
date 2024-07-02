@@ -11,6 +11,7 @@ import {
 import {auth} from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
 import {addUser} from '../Redux/Slices/userSlice'
+import {useNavigate} from 'react-router-dom'
 
 const Form = () => {
   const [isSignInActive, setIsSignInActive] = useState(true)
@@ -19,6 +20,7 @@ const Form = () => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [isPasswordHidden, setIsPasswordHidden] = useState(true)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const fullName = useRef(null)
   const email = useRef(null)
@@ -66,7 +68,7 @@ const Form = () => {
             .then(() => {
               const {uid, email, displayName} = auth.currentUser
               dispatch(addUser({uid, email, displayName}))
-              console.log('updated')
+              navigate('/browse')
             })
             .catch((error) => {
               setErrorMessage(error.message)
@@ -90,6 +92,7 @@ const Form = () => {
           // Signed in
           const user = userCredential.user
           setEmailErrorMsg(null)
+          navigate('/browse')
         })
         .catch((error) => {
           const errorMessage = error.message

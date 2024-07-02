@@ -76,6 +76,16 @@ const Header = () => {
                   Tv Series
                 </NavLink>
               </li>
+              <li className="hover:netflixText">
+                <NavLink
+                  className={({isActive}) =>
+                    isActive ? 'netflixText' : undefined
+                  }
+                  to={'/browse/ai_search'}
+                >
+                  AI Search
+                </NavLink>
+              </li>
             </ul>
           </nav>
         )}
