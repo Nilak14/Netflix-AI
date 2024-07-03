@@ -1,6 +1,9 @@
 import {IMG_LINK} from '../../utils/constant'
 
 const InfiniteCard = ({data}) => {
+  if (!data.poster_path) {
+    return
+  }
   return (
     <article className="flex flex-col gap-3 mb-2 ">
       <img
