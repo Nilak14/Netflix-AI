@@ -4,10 +4,14 @@ import {signOut} from 'firebase/auth'
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
 import {NavLink, Link} from 'react-router-dom'
+import {IoSearch} from 'react-icons/io5'
+import {useDispatch} from 'react-redux'
+import {toggleSearchPage} from '../Redux/Slices/SearchSlice'
 
 const Header = () => {
   const user = useSelector((store) => store.userSlice)
   const [isScrolled, setIsScrolled] = useState(false)
+  const dispatch = useDispatch()
 
   const handleSignOut = () => {
     signOut(auth)
@@ -92,10 +96,18 @@ const Header = () => {
       </div>
       {user && (
         <div className="rounded-md relative cursor-pointer flex items-center gap-1">
-          <img className="rounded-md" src={FACE_URL} alt="" />
+          <img className="rounded-md  hidden sm:block" src={FACE_URL} alt="" />
+          {/* search for mobile only */}
+          <Link
+            to={'/search'}
+            // onClick={() => dispatch(toggleSearchPage())}
+            className="sm:hidden hover:scale-110"
+          >
+            <IoSearch className="text-white text-xl mr-3" />
+          </Link>
           <button
             onClick={handleSignOut}
-            className="bg-black px-2 py-1 text-white rounded-md hover:scale-105 transition-transform"
+            className="bg-black p-1 sm:px-2 sm:py-1 text-white rounded-md hover:scale-105 transition-transform"
           >
             Sign out
           </button>
