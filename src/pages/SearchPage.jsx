@@ -27,9 +27,15 @@ const SearchPage = () => {
   }, [navigate])
   return (
     <section className="bg-neutral-900 min-h-screen px-4 text-white sm:hidden  ">
-      <div className="min-h-[70px]   flex items-center">
+      <div className="min-h-[70px]   flex items-center justify-between">
         <Link className="hover:scale-110" to={'/browse'}>
           <FaArrowLeft className="text-white text-2xl" />
+        </Link>
+        <Link
+          className="netflixBG px-2 py-1 rounded-md  tracking-wider font-semibold hover:bg-red-700"
+          to={'/browse/ai_search'}
+        >
+          AI Search
         </Link>
       </div>
       <SearchForm state={searchText} setState={setSearchText} />

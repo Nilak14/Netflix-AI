@@ -7,8 +7,11 @@ const searchSlice = createSlice({
     cachedData: {},
   },
   reducers: {
-    toggleSearchPage: (state) => {
-      state.isSearchPageOn = !state.isSearchPageOn
+    openSearchPage: (state) => {
+      state.isSearchPageOn = true
+    },
+    closeSearchPage: (state) => {
+      state.isSearchPageOn = false
     },
 
     addDataToCache: (state, action) => {
@@ -17,5 +20,6 @@ const searchSlice = createSlice({
   },
 })
 
-export const {toggleSearchPage, addDataToCache} = searchSlice.actions
+export const {openSearchPage, closeSearchPage, addDataToCache} =
+  searchSlice.actions
 export default searchSlice.reducer

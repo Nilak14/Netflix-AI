@@ -1,7 +1,6 @@
 import InfiniteCard from './UI/InfiniteCard'
 
 const SearchResult = ({data}) => {
-  console.log(data)
   if (data.length === 0) {
     return (
       <h1 className="mt-20 text-center font-bold text-2xl capitalize tracking-wider">

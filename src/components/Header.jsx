@@ -6,7 +6,8 @@ import {useState, useEffect} from 'react'
 import {NavLink, Link} from 'react-router-dom'
 import {IoSearch} from 'react-icons/io5'
 import {useDispatch} from 'react-redux'
-import {toggleSearchPage} from '../Redux/Slices/SearchSlice'
+import SearchBar from './UI/SearchBar'
+import {closeSearchPage} from '../Redux/Slices/SearchSlice'
 
 const Header = () => {
   const user = useSelector((store) => store.userSlice)
@@ -51,6 +52,7 @@ const Header = () => {
             <ul className="flex gap-4 font-bold">
               <li className="hover:netflixText">
                 <NavLink
+                  onClick={() => dispatch(closeSearchPage())}
                   className={({isActive}) =>
                     isActive ? 'netflixText' : undefined
                   }
@@ -62,6 +64,7 @@ const Header = () => {
               </li>
               <li className="hover:netflixText">
                 <NavLink
+                  onClick={() => dispatch(closeSearchPage())}
                   className={({isActive}) =>
                     isActive ? 'netflixText' : undefined
                   }
@@ -72,6 +75,7 @@ const Header = () => {
               </li>
               <li className="hover:netflixText">
                 <NavLink
+                  onClick={() => dispatch(closeSearchPage())}
                   className={({isActive}) =>
                     isActive ? 'netflixText' : undefined
                   }
@@ -82,6 +86,7 @@ const Header = () => {
               </li>
               <li className="hover:netflixText">
                 <NavLink
+                  onClick={() => dispatch(closeSearchPage())}
                   className={({isActive}) =>
                     isActive ? 'netflixText' : undefined
                   }
@@ -96,13 +101,13 @@ const Header = () => {
       </div>
       {user && (
         <div className="rounded-md relative cursor-pointer flex items-center gap-1">
+          {/* search for big screen */}
+          <div className="-translate-x-2">
+            <SearchBar />
+          </div>
           <img className="rounded-md  hidden sm:block" src={FACE_URL} alt="" />
           {/* search for mobile only */}
-          <Link
-            to={'/search'}
-            // onClick={() => dispatch(toggleSearchPage())}
-            className="sm:hidden hover:scale-110"
-          >
+          <Link to={'/search'} className="sm:hidden hover:scale-110">
             <IoSearch className="text-white text-xl mr-3" />
           </Link>
           <button

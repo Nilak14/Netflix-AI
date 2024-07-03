@@ -3,10 +3,9 @@ import {onAuthStateChanged} from 'firebase/auth'
 import {auth} from './Firebase/firebase'
 import {useEffect} from 'react'
 import {addUser, removeUser} from './Redux/Slices/userSlice'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import Header from './components/Header'
 import MobileNav from './components/MobileNav'
-import SearchPage from './pages/SearchPage'
 const AppLayout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -15,7 +14,7 @@ const AppLayout = () => {
       if (user) {
         const {uid, email, displayName} = user
         dispatch(addUser({uid, email, displayName}))
-        navigate('/browse')
+        // navigate('/browse')
         // ...
       } else {
         // User is signed out
@@ -25,9 +24,7 @@ const AppLayout = () => {
     })
     return () => unsubscribe()
   }, [])
-  const isSearchPageOn = useSelector(
-    (store) => store.SearchSlice.isSearchPageOn
-  )
+
   return (
     <section className="relative ">
       <Header />
