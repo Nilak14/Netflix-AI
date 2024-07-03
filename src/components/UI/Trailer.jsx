@@ -1,6 +1,5 @@
 import {useSelector} from 'react-redux'
 import useMovieTrailer from '../../Hooks/useMovieTrailer'
-import {useState} from 'react'
 
 const Trailer = ({movieID}) => {
   const movieTrailerData = useSelector((store) => store.movieSlice.trailer)

@@ -10,9 +10,11 @@ const SearchRecommended = () => {
       <h1 className="font-bold text-xl tracking-wider mb-3 ">
         Recommended Movies and Shows
       </h1>
-      {popularMovies.map((movies) => {
-        return <InfiniteCard key={movies.id} data={movies} />
-      })}
+      <div className="flex flex-col gap-8">
+        {popularMovies.map((movies) => {
+          return <InfiniteCard key={movies.id} data={movies} />
+        })}
+      </div>
     </section>
   )
 }
