@@ -9,6 +9,7 @@ import MoviesPage from './pages/MoviesPage'
 import TvSeriesPage from './pages/TvSeriesPage'
 import BrowseLayout from './BrowseLayout'
 import AISearch from './pages/AISearch'
+import SearchPage from './pages/SearchPage'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path={'ai_search'} element={<AISearch />} />
               </Route>
             </Route>
+            <Route path="/search" element={<SearchPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>

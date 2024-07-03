@@ -8,7 +8,7 @@ const MobileNav = () => {
     <section className="sm:hidden fixed bottom-0 bg-black w-full z-10 h-16 shadow-2xl shadow-white">
       {user && (
         <nav className="flex h-full justify-center items-center">
-          <ul className="flex gap-16 font-bold tracking-wider items-center justify-center ">
+          <ul className="flex  font-bold tracking-wider items-center justify-between w-full ">
             <li className=" text-white py-2 px-4 rounded-lg hover:netflixText">
               <NavLink
                 className={({isActive}) =>

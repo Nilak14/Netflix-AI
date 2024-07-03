@@ -3,9 +3,10 @@ import {onAuthStateChanged} from 'firebase/auth'
 import {auth} from './Firebase/firebase'
 import {useEffect} from 'react'
 import {addUser, removeUser} from './Redux/Slices/userSlice'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Header from './components/Header'
 import MobileNav from './components/MobileNav'
+import SearchPage from './pages/SearchPage'
 const AppLayout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -24,6 +25,9 @@ const AppLayout = () => {
     })
     return () => unsubscribe()
   }, [])
+  const isSearchPageOn = useSelector(
+    (store) => store.SearchSlice.isSearchPageOn
+  )
   return (
     <section className="relative ">
       <Header />
