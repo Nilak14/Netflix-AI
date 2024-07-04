@@ -3,9 +3,7 @@ import {RxCrossCircled} from 'react-icons/rx'
 import formValidation from '../utils/formValidation'
 import {IoEye} from 'react-icons/io5'
 import {IoEyeOff} from 'react-icons/io5'
-import {auth} from '../Firebase/firebase'
-import {useDispatch, useSelector} from 'react-redux'
-// import {addUser} from '../Redux/Slices/userSlice'
+import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {
   doSignInWithEmailAndPassword,
@@ -18,7 +16,6 @@ const Form = () => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [isPasswordHidden, setIsPasswordHidden] = useState(true)
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const fullName = useRef(null)

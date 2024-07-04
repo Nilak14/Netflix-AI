@@ -1,6 +1,5 @@
 import {useSelector} from 'react-redux'
-import {auth} from '../Firebase/firebase'
-import {signOut} from 'firebase/auth'
+
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
 import {NavLink, Link, useNavigate} from 'react-router-dom'

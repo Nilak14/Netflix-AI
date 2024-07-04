@@ -2,8 +2,6 @@ import {useSelector} from 'react-redux'
 
 import BGImage from './UI/BGImage'
 import MovieTitle from './UI/MovieTitle'
-import {LuInfo} from 'react-icons/lu'
-import {FaPlay} from 'react-icons/fa'
 
 const PosterSection = ({type, close, open}) => {
   const data =

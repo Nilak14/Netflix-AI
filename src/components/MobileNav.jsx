@@ -5,7 +5,7 @@ import {BiSolidTv} from 'react-icons/bi'
 const MobileNav = () => {
   const user = useSelector((store) => store.userSlice.userLoggedIn)
   return (
-    <section className="sm:hidden fixed bottom-0 bg-black w-full z-10 h-16 shadow-2xl shadow-white">
+    <footer className="sm:hidden fixed bottom-0 bg-black w-full z-10 h-16 shadow-2xl shadow-white">
       {user && (
         <nav className="flex h-full justify-center items-center">
           <ul className="flex  font-bold tracking-wider items-center justify-between w-full ">
@@ -52,7 +52,7 @@ const MobileNav = () => {
           </ul>
         </nav>
       )}
-    </section>
+    </footer>
   )
 }
 export default MobileNav

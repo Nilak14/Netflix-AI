@@ -1,8 +1,6 @@
-import {useState} from 'react'
 import {FaPlay} from 'react-icons/fa'
 import {LuInfo} from 'react-icons/lu'
-import MovieModel from './MovieModel'
-const MovieTitle = ({movieID, movieTitle, movieOverview, close, open}) => {
+const MovieTitle = ({movieTitle, movieOverview, open}) => {
   return (
     <article className="text-white ml-4 md:ml-10 mt-4 sm:mt-[10%]  absolute z-10 ">
       <div className="">
