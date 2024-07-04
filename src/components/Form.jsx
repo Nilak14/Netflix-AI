@@ -3,15 +3,14 @@ import {RxCrossCircled} from 'react-icons/rx'
 import formValidation from '../utils/formValidation'
 import {IoEye} from 'react-icons/io5'
 import {IoEyeOff} from 'react-icons/io5'
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from 'firebase/auth'
 import {auth} from '../Firebase/firebase'
-import {useDispatch} from 'react-redux'
-import {addUser} from '../Redux/Slices/userSlice'
+import {useDispatch, useSelector} from 'react-redux'
+// import {addUser} from '../Redux/Slices/userSlice'
 import {useNavigate} from 'react-router-dom'
+import {
+  doSignInWithEmailAndPassword,
+  doCreateUserWithEmailAndPassword,
+} from '../Firebase/auth'
 
 const Form = () => {
   const [isSignInActive, setIsSignInActive] = useState(true)
@@ -26,6 +25,8 @@ const Form = () => {
   const email = useRef(null)
   const password = useRef(null)
 
+  const userLoggedIn = useSelector((store) => store.userSlice.userLoggedIn)
+
   useEffect(() => {
     if (isSignInActive) {
       email.current.value = 'guest001@netflix.com'
@@ -39,7 +40,7 @@ const Form = () => {
     }
   }, [isSignInActive])
 
-  const handleFormValidation = () => {
+  const handleFormValidation = async () => {
     const msg = formValidation(email.current.value, password.current.value)
     if (msg?.includes('email')) {
       setEmailErrorMsg(msg)
@@ -55,53 +56,27 @@ const Form = () => {
 
     if (!isSignInActive) {
       // sign up logic
-      createUserWithEmailAndPassword(
-        auth,
+      await doCreateUserWithEmailAndPassword(
         email.current.value,
         password.current.value
-      )
-        .then((userCredential) => {
-          const user = userCredential.user
-          updateProfile(user, {
-            displayName: fullName.current.value,
-          })
-            .then(() => {
-              const {uid, email, displayName} = auth.currentUser
-              dispatch(addUser({uid, email, displayName}))
-              navigate('/browse')
-            })
-            .catch((error) => {
-              setErrorMessage(error.message)
-            })
-          setErrorMessage(null)
-        })
-        .catch((error) => {
-          const errorMessage = error.message
-          setErrorMessage(errorMessage)
-          // ..
-        })
+      ).catch((err) => {
+        if (err.code === 'auth/network-request-failed') {
+          setErrorMessage('Network error, please try again.')
+        } else {
+          setErrorMessage(err.message)
+        }
+      })
     } else {
       // login logic
-
-      signInWithEmailAndPassword(
-        auth,
+      await doSignInWithEmailAndPassword(
         email.current.value,
         password.current.value
-      )
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user
-          setEmailErrorMsg(null)
-          navigate('/browse')
-        })
-        .catch((error) => {
-          const errorMessage = error.message
-          setErrorMessage(errorMessage)
-        })
+      ).catch((err) => setErrorMessage(err.message))
     }
   }
 
   const handleFormToggle = () => {
+    setErrorMessage(null)
     setIsSignInActive(!isSignInActive)
   }
 
@@ -109,6 +84,11 @@ const Form = () => {
     e.preventDefault()
     setIsPasswordHidden(!isPasswordHidden)
   }
+  useEffect(() => {
+    if (userLoggedIn) {
+      navigate('/browse')
+    }
+  }, [userLoggedIn, navigate])
 
   return (
     <form

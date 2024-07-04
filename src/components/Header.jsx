@@ -3,23 +3,20 @@ import {auth} from '../Firebase/firebase'
 import {signOut} from 'firebase/auth'
 import {FACE_URL, NETFLIX_LOGO_URL} from '../utils/constant'
 import {useState, useEffect} from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink, Link, useNavigate} from 'react-router-dom'
 import {IoSearch} from 'react-icons/io5'
 import {useDispatch} from 'react-redux'
 import SearchBar from './UI/SearchBar'
 import {closeSearchPage} from '../Redux/Slices/SearchSlice'
+import {doSignOut} from '../Firebase/auth'
 
 const Header = () => {
-  const user = useSelector((store) => store.userSlice)
+  const user = useSelector((store) => store.userSlice.userLoggedIn)
   const [isScrolled, setIsScrolled] = useState(false)
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        console.log(error)
-      })
+    doSignOut().then(() => navigate('/'))
   }
 
   useEffect(() => {

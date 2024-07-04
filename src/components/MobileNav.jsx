@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import {MdHome, MdMovie} from 'react-icons/md'
 import {BiSolidTv} from 'react-icons/bi'
 const MobileNav = () => {
-  const user = useSelector((store) => store.userSlice)
+  const user = useSelector((store) => store.userSlice.userLoggedIn)
   return (
     <section className="sm:hidden fixed bottom-0 bg-black w-full z-10 h-16 shadow-2xl shadow-white">
       {user && (
