@@ -2,7 +2,7 @@ import {useSelector} from 'react-redux'
 import MovieTitle from './UI/MovieTitle'
 import Trailer from './UI/Trailer'
 import Cover from './UI/Cover'
-const MovieTrailerBG = () => {
+const MovieTrailerBG = ({open, close}) => {
   const nowPlayingMovies = useSelector(
     (store) => store.movieSlice?.nowPlayingMovies
   )
@@ -14,7 +14,13 @@ const MovieTrailerBG = () => {
   return (
     <section className="relative">
       <Cover />
-      <MovieTitle movieID={id} movieTitle={title} movieOverview={overview} />
+      <MovieTitle
+        close={close}
+        open={open}
+        movieID={id}
+        movieTitle={title}
+        movieOverview={overview}
+      />
       <Trailer movieID={id} />
     </section>
   )

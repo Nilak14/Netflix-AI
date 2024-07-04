@@ -1,11 +1,21 @@
 import {useSearchParams} from 'react-router-dom'
 import InfiniteCard from '../components/UI/InfiniteCard'
 import useSearch from '../Hooks/useSearch'
+import {useState} from 'react'
 
 const BigSearchPage = () => {
   const [searchParam, setSearchParam] = useSearchParams()
+  const [activeModelIndex, setActiveModelIndex] = useState(null)
   const query = searchParam.get('search')
   const searchResult = useSearch(query)
+
+  const closeModel = (index) => {
+    setActiveModelIndex((prev) => prev === index && null)
+  }
+  const openModel = (index) => {
+    setActiveModelIndex(index)
+  }
+
   if (searchResult.length === 0) {
     return (
       <section className=" bg-neutral-900  flex justify-center flex-col items-center gap-3 min-h-[calc(100vh-166px)]  sm:min-h-[calc(100vh-90px)] ">
@@ -24,8 +34,16 @@ const BigSearchPage = () => {
           Search Results:
         </h1>
         <div className=" grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-8 w-[min(80vw,1800px)] m-auto mt-[50px] font-bold tracking-wider">
-          {searchResult.map((movies) => {
-            return <InfiniteCard key={movies.id} data={movies} />
+          {searchResult.map((movies, index) => {
+            return (
+              <InfiniteCard
+                isActive={activeModelIndex === index}
+                open={() => openModel(index)}
+                close={() => closeModel(index)}
+                key={movies.id}
+                data={movies}
+              />
+            )
           })}
         </div>
       </section>

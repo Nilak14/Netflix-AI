@@ -27,7 +27,7 @@ const SearchPage = () => {
   }, [navigate])
   return (
     <section className="bg-neutral-900 min-h-screen px-4 text-white sm:hidden  ">
-      <div className="min-h-[70px]   flex items-center justify-between">
+      <div className="min-h-[70px]   flex items-center justify-between sticky top-0 z-10 bg-neutral-900">
         <Link className="hover:scale-110" to={'/browse'}>
           <FaArrowLeft className="text-white text-2xl" />
         </Link>

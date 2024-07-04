@@ -3,8 +3,16 @@ import {useSelector} from 'react-redux'
 import fetchInfiniteMovie from '../Hooks/fetchInfiniteMovie'
 import InfiniteCard from './UI/InfiniteCard'
 import fetchInfiniteSeries from '../Hooks/fetchInfiniteSeries'
+import {useState} from 'react'
 
 const InfiniteScrollSection = ({type}) => {
+  const [activeModelIndex, setActiveModelIndex] = useState(null)
+  const closeModel = (index) => {
+    setActiveModelIndex((prev) => prev === index && null)
+  }
+  const openModel = (index) => {
+    setActiveModelIndex(index)
+  }
   let data =
     type === 'movie'
       ? useSelector((store) => store.infiniteMovieSlice.movieList)
@@ -18,10 +26,18 @@ const InfiniteScrollSection = ({type}) => {
     (item, index, self) => index === self.findIndex((t) => t.id === item.id)
   )
   return (
-    <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-[min(90vw,1800px)] m-auto ">
+    <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-[min(90vw,1800px)] m-auto  ">
       {data.map((item, index) => {
         if (index === 0) return
-        return <InfiniteCard key={item.id} data={item} />
+        return (
+          <InfiniteCard
+            isActive={activeModelIndex === index}
+            open={() => openModel(index)}
+            close={() => closeModel(index)}
+            key={item.id}
+            data={item}
+          />
+        )
       })}
       <InfiniteScroll
         dataLength={data.length}

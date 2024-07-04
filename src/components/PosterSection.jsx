@@ -5,7 +5,7 @@ import MovieTitle from './UI/MovieTitle'
 import {LuInfo} from 'react-icons/lu'
 import {FaPlay} from 'react-icons/fa'
 
-const PosterSection = ({type}) => {
+const PosterSection = ({type, close, open}) => {
   const data =
     type === 'movie'
       ? useSelector((store) => store.infiniteMovieSlice.movieList)[0]
@@ -16,6 +16,8 @@ const PosterSection = ({type}) => {
   return (
     <section>
       <MovieTitle
+        close={close}
+        open={open}
         movieID={data.id}
         movieTitle={data.title ?? data.name}
         movieOverview={data.overview}

@@ -2,10 +2,19 @@ import {useState, useRef} from 'react'
 import Movies from './UI/Movies'
 import {FaChevronLeft} from 'react-icons/fa'
 import {FaChevronRight} from 'react-icons/fa'
+import MovieModel from './UI/MovieModel'
 const MovieList = ({title, movies}) => {
   const [isCardHover, setIsCardHover] = useState(false)
   const [isCardSlide, setIsCardSlide] = useState(false)
   const containerRef = useRef()
+
+  const [activeModelIndex, setActiveModelIndex] = useState(null)
+  const closeModel = (index) => {
+    setActiveModelIndex((prev) => prev === index && null)
+  }
+  const openModel = (index) => {
+    setActiveModelIndex(index)
+  }
   if (!movies) return
 
   const scrollContainer = (direction) => {
@@ -28,14 +37,14 @@ const MovieList = ({title, movies}) => {
   }
 
   return (
-    <article className="overflow-x-hidden  ">
+    <article className="overflow-x-hidden   ">
       <h1 className="capitalize font-bold tracking-wider text-xl my-4">
         {title}
       </h1>
       <div
         onMouseEnter={() => setIsCardHover(true)}
         onMouseLeave={() => setIsCardHover(false)}
-        className="flex gap-4 items-center relative"
+        className="flex gap-4  items-center relative "
       >
         {isCardSlide && (
           <button
@@ -60,8 +69,14 @@ const MovieList = ({title, movies}) => {
           className="flex gap-4 overflow-x-auto no-scrollbar"
           ref={containerRef}
         >
-          {movies.map((movie) => (
-            <Movies key={movie.id} movie={movie} />
+          {movies.map((movie, index) => (
+            <Movies
+              key={movie.id}
+              isActive={activeModelIndex === index}
+              open={() => openModel(index)}
+              close={() => closeModel(index)}
+              movie={movie}
+            />
           ))}
         </div>
       </div>
