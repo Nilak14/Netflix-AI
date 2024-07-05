@@ -1,5 +1,3 @@
-import React from 'react'
-
 const AIPageShimmer = () => {
   return (
     <section className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-8 w-[min(90vw,1800px)] m-auto mt-[50px] font-bold tracking-wider">

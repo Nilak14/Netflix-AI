@@ -18,7 +18,7 @@ const useMoviesDetails = (movieId) => {
         console.log('ok error')
         return
       }
-      const data = response.json()
+      const data = await response.json()
       dispatch(addMovieDetails(data))
     } catch (error) {
       console.log(error)

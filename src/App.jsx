@@ -27,6 +27,7 @@ function App() {
               </Route>
             </Route>
             <Route path="/search" element={<SearchPage />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
       </Provider>

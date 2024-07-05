@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react'
-import BGImage from './BGImage'
+import ModelContent from './ModelContent'
 
 const MovieModel = ({close, location, id, type}) => {
   const [scrollPosition, setScrollPosition] = useState(0)
-  console.log('ID: ' + id)
-  console.log('Type: ' + type)
+
   useEffect(() => {
     const currentScrollPosition = window.scrollY
     setScrollPosition(currentScrollPosition)
@@ -17,7 +16,7 @@ const MovieModel = ({close, location, id, type}) => {
   }, [])
 
   const articleStyle = {
-    top: location ? '20%' : `${scrollPosition + 70}px`,
+    top: location ? '70px' : `${scrollPosition + 70}px`,
   }
 
   return (
@@ -27,16 +26,10 @@ const MovieModel = ({close, location, id, type}) => {
       }  inset-0 min-h-screen bg-[rgba(0,0,0,0.6)] z-20 flex flex-col items-center justify-between`}
     >
       <article
-        className={`bg-black absolute w-[min(100vw,800px)] h-[50vh] overflow-y-auto rounded-lg `}
+        className={`bg-neutral-900 absolute w-[min(100vw,800px)] h-[100vh] overflow-y-auto rounded-lg no-scrollbar shadow-lg shadow-black pb-[170px] sm:pb-[100px] `}
         style={articleStyle}
       >
-        <p>{`ID: ${id}, type: ${type}`}</p>
-        <button
-          onClick={() => close()}
-          className="netflixBG px-5 rounded-md py-1"
-        >
-          X
-        </button>
+        <ModelContent type={type} id={id} close={close} />
       </article>
     </section>
   )

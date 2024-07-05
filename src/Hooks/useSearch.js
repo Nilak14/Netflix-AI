@@ -20,7 +20,7 @@ const useSearch = (searchQuery) => {
   const fetchSearchResult = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/multi?query=${searchQuery}&include_adult=false&page=1`,
+        `https://api.themoviedb.org/3/search/multi?query=${searchQuery}&include_adult=true&page=1`,
         API_OPTIONS
       )
       if (!response.ok) {

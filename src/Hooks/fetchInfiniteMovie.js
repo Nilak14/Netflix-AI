@@ -14,7 +14,7 @@ const fetchInfiniteMovie = () => {
     dispatch(increasePage())
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc`,
+        `https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc`,
         API_OPTIONS
       )
       if (!response.ok) {

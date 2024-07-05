@@ -18,7 +18,7 @@ const useSeriesDetails = (seriesId) => {
         console.log('ok error')
         return
       }
-      const data = response.json()
+      const data = await response.json()
       dispatch(addSeriesDetails(data))
     } catch (error) {
       console.log(error)

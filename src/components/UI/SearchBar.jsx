@@ -53,7 +53,7 @@ const SearchBar = () => {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         type="text"
-        placeholder="Titles, people, genres"
+        placeholder="Movies,Series"
         className={`transition-all duration-300 ease-in-out bg-black opacity-0 text-white border border-transparent outline-none pl-9 text-lg h-9 ${
           isToggled ? 'w-60 border-white bg-black opacity-50' : 'w-0'
         }`}

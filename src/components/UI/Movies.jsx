@@ -2,7 +2,6 @@ import {IMG_LINK} from '../../utils/constant'
 import MovieModel from './MovieModel'
 
 const Movies = ({movie, isActive, open, close}) => {
-  console.log(movie)
   const imageUrl = IMG_LINK + movie.poster_path
   return (
     <>
@@ -10,7 +9,7 @@ const Movies = ({movie, isActive, open, close}) => {
         onClick={() => {
           open()
         }}
-        className="h-[240px] "
+        className="h-[240px] cursor-pointer "
         src={imageUrl}
         alt={movie.title}
       />
