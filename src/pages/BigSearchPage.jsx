@@ -7,8 +7,11 @@ const BigSearchPage = () => {
   const [searchParam, setSearchParam] = useSearchParams()
   const [activeModelIndex, setActiveModelIndex] = useState(null)
   const query = searchParam.get('search')
-  const searchResult = useSearch(query)
-
+  let searchResult = useSearch(query)
+  searchResult = searchResult.filter(
+    (item) => item.media_type !== 'person' && item?.poster_path !== null
+  )
+  console.log(searchResult)
   const closeModel = (index) => {
     setActiveModelIndex((prev) => prev === index && null)
   }
@@ -31,10 +34,12 @@ const BigSearchPage = () => {
       <div className="absolute bg-neutral-900 w-full h-[70px] top-[-70px]"></div>
       <section className="mt-14 w-[85%] m-auto pb-5">
         <h1 className="font-bold text-xl tracking-wider mb-3 ">
-          Search Results:
+          Search Results for {query}:
         </h1>
         <div className=" grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-8 w-[min(80vw,1800px)] m-auto mt-[50px] font-bold tracking-wider">
           {searchResult.map((movies, index) => {
+            const type =
+              movies.media_type === 'movie' ? movies.media_type : 'series'
             return (
               <InfiniteCard
                 isActive={activeModelIndex === index}
@@ -42,6 +47,7 @@ const BigSearchPage = () => {
                 close={() => closeModel(index)}
                 key={movies.id}
                 data={movies}
+                type={type}
               />
             )
           })}

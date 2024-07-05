@@ -2,7 +2,8 @@ import {useSelector} from 'react-redux'
 import MovieTitle from './UI/MovieTitle'
 import Trailer from './UI/Trailer'
 import Cover from './UI/Cover'
-const MovieTrailerBG = ({open, close}) => {
+import MovieModel from './UI/MovieModel'
+const MovieTrailerBG = ({open, close, isModelActive}) => {
   const nowPlayingMovies = useSelector(
     (store) => store.movieSlice?.nowPlayingMovies
   )
@@ -15,13 +16,14 @@ const MovieTrailerBG = ({open, close}) => {
     <section className="relative">
       <Cover />
       <MovieTitle
-        close={close}
         open={open}
         movieID={id}
         movieTitle={title}
         movieOverview={overview}
       />
       <Trailer movieID={id} />
+      {/* model for home page tailor */}
+      {isModelActive && <MovieModel type={'movie'} id={id} close={close} />}
     </section>
   )
 }

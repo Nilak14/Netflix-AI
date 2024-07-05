@@ -13,10 +13,10 @@ const MoviesPage = () => {
       <PosterSection
         close={() => closeModel()}
         open={() => openModel()}
+        isModelActive={isModelActive}
         type={'movie'}
       />
       <InfiniteScrollSection type={'movie'} />
-      {isModelActive && <MovieModel close={() => closeModel()} />}
     </section>
   )
 }

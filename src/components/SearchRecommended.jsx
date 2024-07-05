@@ -27,6 +27,7 @@ const SearchRecommended = () => {
               close={() => closeModel(index)}
               key={movies.id}
               data={movies}
+              type={'movie'}
             />
           )
         })}

@@ -9,7 +9,10 @@ const SearchPage = () => {
   const [searchText, setSearchText] = useState('')
   const navigate = useNavigate()
 
-  const searchResult = useSearch(searchText)
+  let searchResult = useSearch(searchText)
+  searchResult = searchResult.filter(
+    (item) => item.media_type !== 'person' && item?.poster_path !== null
+  )
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 600) {
@@ -42,7 +45,7 @@ const SearchPage = () => {
       {searchText === '' ? (
         <SearchRecommend />
       ) : (
-        <SearchResult data={searchResult} />
+        <SearchResult text={searchText} data={searchResult} />
       )}
     </section>
   )

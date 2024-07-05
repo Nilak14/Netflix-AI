@@ -3,7 +3,8 @@ import BGImage from './BGImage'
 
 const MovieModel = ({close, location, id, type}) => {
   const [scrollPosition, setScrollPosition] = useState(0)
-
+  console.log('ID: ' + id)
+  console.log('Type: ' + type)
   useEffect(() => {
     const currentScrollPosition = window.scrollY
     setScrollPosition(currentScrollPosition)
@@ -29,6 +30,7 @@ const MovieModel = ({close, location, id, type}) => {
         className={`bg-black absolute w-[min(100vw,800px)] h-[50vh] overflow-y-auto rounded-lg `}
         style={articleStyle}
       >
+        <p>{`ID: ${id}, type: ${type}`}</p>
         <button
           onClick={() => close()}
           className="netflixBG px-5 rounded-md py-1"

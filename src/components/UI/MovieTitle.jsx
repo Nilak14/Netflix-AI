@@ -1,6 +1,6 @@
 import {FaPlay} from 'react-icons/fa'
 import {LuInfo} from 'react-icons/lu'
-const MovieTitle = ({movieTitle, movieOverview, open}) => {
+const MovieTitle = ({movieTitle, movieOverview, open, movieID}) => {
   return (
     <article className="text-white ml-4 md:ml-10 mt-4 sm:mt-[10%]  absolute z-10 ">
       <div className="">

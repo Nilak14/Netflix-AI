@@ -1,7 +1,7 @@
 import {IMG_LINK} from '../../utils/constant'
 import MovieModel from './MovieModel'
 
-const InfiniteCard = ({data, isActive, open, close}) => {
+const InfiniteCard = ({data, isActive, open, close, type}) => {
   if (!data.poster_path) {
     return
   }
@@ -12,7 +12,7 @@ const InfiniteCard = ({data, isActive, open, close}) => {
         onClick={() => {
           open()
         }}
-        className="flex flex-col gap-3 mb-2 overflow-hidden "
+        className="flex flex-col gap-3 mb-2 overflow-hidden cursor-pointer "
       >
         <img
           className="h-[300px] object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
@@ -21,7 +21,7 @@ const InfiniteCard = ({data, isActive, open, close}) => {
         />
         <h1 className="font-bold tracking-wider">{data.title ?? data.name}</h1>
       </article>
-      {isActive && <MovieModel close={close} />}
+      {isActive && <MovieModel type={type} id={data.id} close={close} />}
     </article>
   )
 }

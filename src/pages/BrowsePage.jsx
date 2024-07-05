@@ -14,9 +14,12 @@ const BrowsePage = () => {
 
   return (
     <>
-      <MovieTrailerBG close={() => closeModel()} open={() => openModel()} />
+      <MovieTrailerBG
+        isModelActive={isModelActive}
+        close={() => closeModel()}
+        open={() => openModel()}
+      />
       <MoviesListContainer />
-      {isModelActive && <MovieModel close={() => closeModel()} />}
     </>
   )
 }

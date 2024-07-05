@@ -36,6 +36,7 @@ const InfiniteScrollSection = ({type}) => {
             close={() => closeModel(index)}
             key={item.id}
             data={item}
+            type={type}
           />
         )
       })}

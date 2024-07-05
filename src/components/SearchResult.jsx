@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import InfiniteCard from './UI/InfiniteCard'
 
-const SearchResult = ({data}) => {
+const SearchResult = ({data, text}) => {
   const [activeModelIndex, setActiveModelIndex] = useState(null)
   const closeModel = (index) => {
     setActiveModelIndex((prev) => prev === index && null)
@@ -19,10 +19,12 @@ const SearchResult = ({data}) => {
   return (
     <section className="mt-14 w-[85%] m-auto pb-5">
       <h1 className="font-bold text-xl tracking-wider mb-3 ">
-        Search Results:
+        Search Results for {text}:
       </h1>
       <div className="flex flex-col gap-8">
         {data.map((movies, index) => {
+          const type =
+            movies.media_type === 'movie' ? movies.media_type : 'series'
           return (
             <InfiniteCard
               isActive={activeModelIndex === index}
@@ -30,6 +32,7 @@ const SearchResult = ({data}) => {
               close={() => closeModel(index)}
               key={movies.id}
               data={movies}
+              type={type}
             />
           )
         })}
