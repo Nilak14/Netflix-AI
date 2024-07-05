@@ -14,7 +14,7 @@ const BGImage = ({id, type}) => {
       : useSelector((store) => store.movieSlice.seriesImages)?.backdrops[0]
 
   return (
-    <div className="translate-y-[-70px] brightness-75">
+    <div className="translate-y-[-70px] brightness-[.40]">
       <img
         className="aspect-[16/9] w-full lg:h-[600px] lg:object-cover "
         src={IMG_LINK + imageData?.file_path}

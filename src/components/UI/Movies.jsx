@@ -13,7 +13,7 @@ const Movies = ({movie, isActive, open, close}) => {
         src={imageUrl}
         alt={movie.title}
       />
-      {isActive && <MovieModel close={close} type="home" />}
+      {isActive && <MovieModel close={close} location="home" />}
     </>
   )
 }

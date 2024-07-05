@@ -16,3 +16,7 @@ export const API_OPTIONS = {
 }
 
 export const IMG_LINK = 'https://image.tmdb.org/t/p/w780'
+
+// fetch('https://api.themoviedb.org/3/movie/${movieID}?language=en-US', options) => moviesDetails
+
+// fetch('https://api.themoviedb.org/3/tv/${seriesID}?language=en-US', options) => seriesDetails
