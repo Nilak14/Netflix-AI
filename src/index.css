@@ -24,3 +24,12 @@
 body.no-scroll {
   overflow: hidden;
 }
+
+.similar-card .play-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.similar-card:hover .play-icon {
+  opacity: 1;
+}

@@ -4,14 +4,17 @@ import useSeriesDetails from '../../Hooks/useSeriesDetails'
 import ModelData from './ModelData'
 import ModelImage from './ModelImage'
 import {FaPlay} from 'react-icons/fa'
-import MovieTitle from './MovieTitle'
 import ModelShimmer from '../Shimmer/ModelShimmer'
+import useSimilarMovies from '../../Hooks/useSimilarMovies'
+import useSimilarSeries from '../../Hooks/useSimilarSeries'
 
 const ModelContent = ({close, id, type}) => {
   if (type === 'movie') {
     useMoviesDetails(id)
+    useSimilarMovies(id)
   } else {
     useSeriesDetails(id)
+    useSimilarSeries(id)
   }
   const data =
     type === 'movie'

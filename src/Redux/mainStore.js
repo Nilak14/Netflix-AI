@@ -5,6 +5,7 @@ import infiniteMovieSlice from './Slices/infiniteMoviesSlice'
 import infiniteSeriesSlice from './Slices/infiniteSeriesSlice'
 import geminiSlice from './Slices/geminiSlice'
 import SearchSlice from './Slices/SearchSlice'
+import similarSlice from './Slices/similarSlice'
 const mainStore = configureStore({
   reducer: {
     userSlice,
@@ -13,6 +14,7 @@ const mainStore = configureStore({
     infiniteSeriesSlice,
     geminiSlice,
     SearchSlice,
+    similarSlice,
   },
 })
 

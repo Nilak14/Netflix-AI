@@ -11,7 +11,6 @@ const BigSearchPage = () => {
   searchResult = searchResult.filter(
     (item) => item.media_type !== 'person' && item?.poster_path !== null
   )
-  console.log(searchResult)
   const closeModel = (index) => {
     setActiveModelIndex((prev) => prev === index && null)
   }
