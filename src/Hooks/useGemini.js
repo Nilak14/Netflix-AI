@@ -8,6 +8,5 @@ const useGemini = (userSearchText) => {
 
   const result = run(prompt)
   dispatch(addGeneratedResult(result))
-  console.log(result)
 }
 export default useGemini

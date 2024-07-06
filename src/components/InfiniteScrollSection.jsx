@@ -4,6 +4,7 @@ import fetchInfiniteMovie from '../Hooks/fetchInfiniteMovie'
 import InfiniteCard from './UI/InfiniteCard'
 import fetchInfiniteSeries from '../Hooks/fetchInfiniteSeries'
 import {useState} from 'react'
+import InfinityCardShimmer from './Shimmer/InfinityCardShimmer'
 
 const InfiniteScrollSection = ({type}) => {
   const [activeModelIndex, setActiveModelIndex] = useState(null)
@@ -20,7 +21,7 @@ const InfiniteScrollSection = ({type}) => {
 
   const fetch = type === 'movie' ? fetchInfiniteMovie() : fetchInfiniteSeries()
 
-  if (!data) return //todo shimmer
+  if (!data) return <InfinityCardShimmer />
 
   data = data.filter(
     (item, index, self) => index === self.findIndex((t) => t.id === item.id)
@@ -44,7 +45,7 @@ const InfiniteScrollSection = ({type}) => {
         dataLength={data.length}
         next={fetch}
         hasMore={true}
-        loader={<h4>Loading...</h4>} //todo shimmer
+        loader={<InfinityCardShimmer />}
       ></InfiniteScroll>
     </section>
   )

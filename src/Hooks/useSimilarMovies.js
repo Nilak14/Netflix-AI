@@ -2,9 +2,11 @@ import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {API_OPTIONS} from '../utils/constant'
 import {addSimilarMovies} from '../Redux/Slices/similarSlice'
+import {useNavigate} from 'react-router-dom'
 
 const useSimilarMovies = (movieId) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     fetchSimilarMovies()
   }, [movieId])
@@ -15,13 +17,12 @@ const useSimilarMovies = (movieId) => {
         API_OPTIONS
       )
       if (!response.ok) {
-        console.log('ok error')
-        return
+        navigate('/error')
       }
       const data = await response.json()
       dispatch(addSimilarMovies(data.results))
     } catch (error) {
-      console.log(error)
+      navigate('/error')
     }
   }
 }

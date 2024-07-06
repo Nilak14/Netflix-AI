@@ -2,9 +2,11 @@ import {useDispatch} from 'react-redux'
 import {API_OPTIONS} from '../utils/constant'
 import {useEffect} from 'react'
 import {addSimilarSeries} from '../Redux/Slices/similarSlice'
+import {useNavigate} from 'react-router-dom'
 
 const useSimilarSeries = (seriesId) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     fetchSimilarSeries()
   }, [seriesId])
@@ -15,13 +17,12 @@ const useSimilarSeries = (seriesId) => {
         API_OPTIONS
       )
       if (!response.ok) {
-        console.log('ok error')
-        return
+        navigate('/error')
       }
       const data = await response.json()
       dispatch(addSimilarSeries(data.results))
     } catch (error) {
-      console.log(error)
+      navigate('/error')
     }
   }
 }

@@ -2,9 +2,11 @@ import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {API_OPTIONS} from '../utils/constant'
 import {addSeriesDetails} from '../Redux/Slices/movieSlice'
+import {useNavigate} from 'react-router-dom'
 
 const useSeriesDetails = (seriesId) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     fetchSeriesDetails()
   }, [seriesId])
@@ -15,13 +17,12 @@ const useSeriesDetails = (seriesId) => {
         API_OPTIONS
       )
       if (!response.ok) {
-        console.log('ok error')
-        return
+        navigate('/error')
       }
       const data = await response.json()
       dispatch(addSeriesDetails(data))
     } catch (error) {
-      console.log(error)
+      navigate('/error')
     }
   }
 }

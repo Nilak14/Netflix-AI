@@ -10,7 +10,6 @@ const Error = () => {
         <img className="md:aspect-auto md:w-[50vw]" src={svg} alt="svg" />
         <button
           onClick={() => {
-            console.log('ok')
             navigate('/')
           }}
           className="py-[12px] px-[15px] netflixBG border-none rounded-md text-white font-bold hover:bg-red-600"

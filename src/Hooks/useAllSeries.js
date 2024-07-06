@@ -29,7 +29,6 @@ const useAllSeries = () => {
 
       dispatch(addSeries(data.results))
     } catch (error) {
-      console.log(error)
       navigate('/error')
     }
   }

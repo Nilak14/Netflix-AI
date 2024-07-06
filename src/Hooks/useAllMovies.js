@@ -26,7 +26,6 @@ const useAllMovies = () => {
 
       dispatch(addMovie(data.results))
     } catch (error) {
-      console.log(error)
       navigate('/error')
     }
   }

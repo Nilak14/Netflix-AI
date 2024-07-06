@@ -17,7 +17,7 @@ const Watch = () => {
   const videoDetail = useSelector((store) => store.movieSlice.watchVideo)
 
   if (videoDetail === 'no') {
-    return <h1>No video found</h1>
+    return <VideoNotFound />
   }
 
   if (!videoDetail || videoDetail.videoId !== videoId) {
@@ -39,6 +39,21 @@ const Watch = () => {
       >
         <FaArrowLeftLong />
       </div>
+    </section>
+  )
+}
+
+const VideoNotFound = () => {
+  const navigate = useNavigate()
+  return (
+    <section className="w-screen h-screen text-white flex flex-col items-center justify-center bg-neutral-900 gap-10">
+      <p className="text-5xl font-serif tracking-wider">No video found</p>
+      <button
+        onClick={() => navigate(-1)}
+        className="netflixBG p-2 rounded-lg font-bold tracking-wide hover:bg-red-700"
+      >
+        Go Back
+      </button>
     </section>
   )
 }

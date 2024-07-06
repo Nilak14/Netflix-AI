@@ -19,14 +19,12 @@ const fetchInfiniteSeries = () => {
         API_OPTIONS
       )
       if (!response.ok) {
-        console.log('ok error')
         navigate('/error')
         return
       }
       const data = await response.json()
       dispatch(addSeries(data.results))
     } catch (error) {
-      console.log(error)
       navigate('/error')
     }
   }
