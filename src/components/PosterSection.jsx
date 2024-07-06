@@ -15,6 +15,7 @@ const PosterSection = ({type, close, open, isModelActive}) => {
   return (
     <section>
       <MovieTitle
+        type={type}
         close={close}
         open={open}
         movieID={data.id}

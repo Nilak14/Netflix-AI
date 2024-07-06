@@ -2,7 +2,7 @@ import {useState, useRef} from 'react'
 import Movies from './UI/Movies'
 import {FaChevronLeft} from 'react-icons/fa'
 import {FaChevronRight} from 'react-icons/fa'
-const MovieList = ({title, movies}) => {
+const MovieList = ({title, movies, type}) => {
   const [isCardHover, setIsCardHover] = useState(false)
   const [isCardSlide, setIsCardSlide] = useState(false)
   const containerRef = useRef()

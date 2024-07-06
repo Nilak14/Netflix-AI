@@ -7,6 +7,7 @@ import {FaPlay} from 'react-icons/fa'
 import ModelShimmer from '../Shimmer/ModelShimmer'
 import useSimilarMovies from '../../Hooks/useSimilarMovies'
 import useSimilarSeries from '../../Hooks/useSimilarSeries'
+import {Link} from 'react-router-dom'
 
 const ModelContent = ({close, id, type}) => {
   if (type === 'movie') {
@@ -39,9 +40,12 @@ const ModelContent = ({close, id, type}) => {
           <p className="absolute bottom-[35%] left-[30px] text-2xl sm:text-3xl font-bold">
             {title}
           </p>
-          <button className="flex absolute bottom-[15%] left-[30px] items-center gap-2 text-sm sm:text-lg bg-white text-black rounded-md px-2 sm:px-4 py-1 sm:py-2 md:px-8 hover:opacity-75 ">
+          <Link
+            to={`/watch/${type}/${id}`}
+            className="flex absolute bottom-[15%] left-[30px] items-center gap-2 text-sm sm:text-lg bg-white text-black rounded-md px-2 sm:px-4 py-1 sm:py-2 md:px-8 hover:opacity-75 "
+          >
             <FaPlay className="text-xs sm:text-xl" /> <span>Play</span>
-          </button>
+          </Link>
         </div>
       </div>
 

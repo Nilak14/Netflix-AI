@@ -10,6 +10,7 @@ import TvSeriesPage from './pages/TvSeriesPage'
 import BrowseLayout from './BrowseLayout'
 import AISearch from './pages/AISearch'
 import SearchPage from './pages/SearchPage'
+import Watch from './pages/Watch'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               </Route>
             </Route>
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/watch/:type/:videoId" element={<Watch />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>

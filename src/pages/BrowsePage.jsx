@@ -15,11 +15,12 @@ const BrowsePage = () => {
   return (
     <>
       <MovieTrailerBG
+        type={'movie'}
         isModelActive={isModelActive}
         close={() => closeModel()}
         open={() => openModel()}
       />
-      <MoviesListContainer />
+      <MoviesListContainer type={'movie'} />
     </>
   )
 }

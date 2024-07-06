@@ -11,7 +11,6 @@ const SimilarList = ({type}) => {
     return <h1>Loading.....</h1>
   }
   data = data.filter((items) => items.backdrop_path)
-  console.log(data)
   return (
     <>
       {data.length > 0 && (
@@ -22,7 +21,7 @@ const SimilarList = ({type}) => {
 
       <section className="grid grid-cols-2 md:grid-cols-3 gap-8 px-6 mt-3">
         {data.map((items) => (
-          <SimilarCard key={items.id} data={items} />
+          <SimilarCard key={items.id} data={items} type={type} />
         ))}
       </section>
     </>

@@ -3,7 +3,7 @@ import MovieTitle from './UI/MovieTitle'
 import Trailer from './UI/Trailer'
 import Cover from './UI/Cover'
 import MovieModel from './UI/MovieModel'
-const MovieTrailerBG = ({open, close, isModelActive}) => {
+const MovieTrailerBG = ({open, close, isModelActive, type}) => {
   const nowPlayingMovies = useSelector(
     (store) => store.movieSlice?.nowPlayingMovies
   )
@@ -16,6 +16,7 @@ const MovieTrailerBG = ({open, close, isModelActive}) => {
     <section className="relative">
       <Cover />
       <MovieTitle
+        type={type}
         open={open}
         movieID={id}
         movieTitle={title}
