@@ -25,7 +25,7 @@ const Watch = () => {
   }
 
   return (
-    <section className="w-screen h-dvh h-screen relative">
+    <section className="w-screen  h-dvh relative">
       <iframe
         className="w-full h-full"
         src={`https://www.youtube.com/embed/${videoDetail.key}?autoplay=1&mute=0&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=0`}
