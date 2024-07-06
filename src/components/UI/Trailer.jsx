@@ -2,11 +2,13 @@ import {useSelector} from 'react-redux'
 import useMovieTrailer from '../../Hooks/useMovieTrailer'
 
 const Trailer = ({movieID}) => {
+  console.log(movieID)
   const movieTrailerData = useSelector((store) => store.movieSlice.trailer)
   useMovieTrailer(movieID)
 
   if (!movieTrailerData) return null
 
+  console.log(movieTrailerData)
   const filterData = movieTrailerData.filter((data) => data.type === 'Trailer')
   const mainTrailer = filterData[0]
 

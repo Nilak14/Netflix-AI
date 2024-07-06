@@ -10,7 +10,7 @@ const MovieTrailerBG = ({open, close, isModelActive, type}) => {
   if (!nowPlayingMovies) {
     return <h1>Loading.....</h1> //todo shimmer
   }
-  const mainMovie = nowPlayingMovies[6] ?? nowPlayingMovies[0]
+  const mainMovie = nowPlayingMovies[0]
   const {id, title, overview} = mainMovie
   return (
     <section className="relative">
